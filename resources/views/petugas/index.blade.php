@@ -41,7 +41,7 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button class="btn btn-sm btn-danger btn-icon ">Delete </button>
                                         <a href="{{ route('petugas.show',$item->id) }}" class="btn btn-sm btn-info btn-icon ">
-                                            Show</a>
+                                                Show</a>
                                     </form>
                                 </div>
                             </td>

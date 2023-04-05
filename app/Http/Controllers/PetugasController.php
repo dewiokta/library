@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePetugasRequest;
+use App\Http\Requests\UpdatePetugasRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Models\Petuga;
@@ -45,33 +46,35 @@ class PetugasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Petuga $petuga)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Petuga $petuga):View
     {
-        //
+        return view('petugas.edit', compact('petuga'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatePetugasRequest $request, Petuga $petuga)
     {
-        //
+        $petuga->update($request->validated());
+        return redirect()->route('petugas.index')->with('success', 'Data berhasil diubah');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Petuga $petugas)
+    public function destroy(Petuga $petuga)
     {
-        $petugas->delete();
+        $petuga->delete();
         return redirect()->route('petugas.index')->with('success', 'Data berhasil dihapus');
     }
 }
