@@ -3,68 +3,59 @@
 @section('content')
 
 <div class="row">
-        <div class="col-lg-12">
+    <div class="col-lg-12">
 
-          <div class="card">
+        <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Datatables</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
+                <h5 class="card-title">Petugas</h5>
 
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Start Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td>2014-12-05</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td>2011-08-12</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td>2012-06-11</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td>2011-04-19</td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
+                <div>
+                    <a href="{{ route('petugas.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                </div>
+                <!-- Table with stripped rows -->
+                <table class="table datatable">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Jabatan</th>
+                            <th scope="col">No Telp</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($petugass as $key => $item)
+                        <tr>
+                            <td>{{ $petugass->firstItem() + $key }}</td>
+                            <td>{{ $item->nama_petugas }}</td>
+                            <td>{{ $item->jabatan }}</td>
+                            <td>{{ $item->no_telp }}</td>
+                            <td>{{ $item->alamat }}</td>
+                            <td>
+                                <div class="d-flex ">
+                                    <a href="{{ route('petugas.edit', $item->id) }}" class="btn btn-sm btn-info btn-icon ">
+                                        Edit</a>
+                                    <form action="{{ route('petugas.destroy', $item->id) }}" method="POST" class="ml-2">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <button class="btn btn-sm btn-danger btn-icon ">Delete </button>
+                                        <a href="{{ route('petugas.show',$item->id) }}" class="btn btn-sm btn-info btn-icon ">
+                                            Show</a>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                    @endforeach
+                </table>
+                <!-- End Table with stripped rows -->
 
             </div>
-          </div>
-
         </div>
-      </div>
+
+    </div>
+</div>
 
 @endsection

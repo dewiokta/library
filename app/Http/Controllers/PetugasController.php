@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePetugasRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use App\Models\Petuga;
 use Illuminate\Support\Facades\DB;
 
 class PetugasController extends Controller
@@ -24,17 +26,20 @@ class PetugasController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create():View
     {
-        //
+        return view('petugas.create');
     }
+    
+    
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePetugasRequest $request)
     {
-        //
+        Petuga::create($request->validated());
+        return redirect()->route('petugas.index')->with('Success','Data Berhasil Ditambahkan');
     }
 
     /**
@@ -64,8 +69,9 @@ class PetugasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Petuga $petugas)
     {
-        //
+        $petugas->delete();
+        return redirect()->route('petugas.index')->with('success', 'Data berhasil dihapus');
     }
 }
