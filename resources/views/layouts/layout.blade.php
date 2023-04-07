@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
-    <link href="../../../public/assets/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="/assets/assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <title>Document</title>
 </head>
 
@@ -23,7 +23,7 @@
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
-                            <a href="" class="nav-link align-middle px-0">
+                            <a href="{{ route('home') }}" class="nav-link align-middle px-0">
                                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                             </a>
                         </li>
@@ -34,43 +34,39 @@
 
                         </li>
                         <li>
-                            <a href="#" class="nav-link align-middle px-0">
+                            <a href="{{ route('rak.index') }}" class="nav-link align-middle px-0">
                                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Rak</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link align-middle px-0">
+                            <a href="{{ route('anggota.index') }}" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Anggota</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('book.index') }}" class="nav-link align-middle px-0">
                                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Buku</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Buku</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link align-middle px-0">
+                            <a href="{{ route('peminjaman.index') }}" class="nav-link align-middle px-0">
                                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Peminjaman</span>
                             </a>
                         </li>
                     </ul>
                     <hr>
-                    <div class="dropdown pb-4">
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                    <div class="dropup pb-4">
+                        <li class="dropup">
+                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div>
                             </a>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item has-icon text-danger">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
                         </li>
                     </div>
                 </div>
@@ -84,8 +80,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-    <script src="../../../public/assets/assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="../../../public/assets/assets/js/main.js"></script>
+    <script src="/assets/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/assets/assets/js/main.js"></script>
 
 </body>
 

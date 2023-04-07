@@ -9,8 +9,24 @@
             <div class="card-body">
                 <h5 class="card-title">Petugas</h5>
 
-                <div>
-                    <a href="{{ route('petugas.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                <div class="row">
+                    <div class="col-sm-6 p-3">
+                        <a href="{{ route('petugas.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                    </div>
+                    <div class="col-sm-6 p-3 d-flex justify-content-end">
+                        <form id="search" method="GET" action="{{ route('petugas.index') }}">
+                            <div class="form-row">
+                                <div class="form-group col-md-9">
+                                    <label for="nama_petugas">Name</label>
+                                    <input type="text" name="nama_petugas" class="form-control" id="nama_petugas" placeholder="Nama">
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn-primary mr-1" type="submit">Submit</button>
+                                <a class="btn btn-secondary" href="{{ route('petugas.index') }}">Reset</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <!-- Table with stripped rows -->
                 <table class="table datatable">
@@ -40,8 +56,6 @@
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button class="btn btn-sm btn-danger btn-icon ">Delete </button>
-                                        <a href="{{ route('petugas.show',$item->id) }}" class="btn btn-sm btn-info btn-icon ">
-                                                Show</a>
                                     </form>
                                 </div>
                             </td>

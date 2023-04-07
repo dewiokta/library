@@ -11,7 +11,7 @@ class UpdateBookRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class UpdateBookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'rak_id' => 'required|exists:raks,id',
+            'judul_buku' => 'required',
+            'kode_buku' => 'required',
+            'penulis' => 'required',
+            'penerbit' => 'required',
+            'thn_terbit' => 'required',
         ];
     }
 }

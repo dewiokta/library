@@ -11,7 +11,7 @@ class StorePeminjamanRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StorePeminjamanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'buku_id' => 'required|exists:books,id',
+            'petugas_id' => 'required|exists:petugas,id',
+            'anggota_id' => 'required|exists:anggotas,id',
+            'tgl_pinjam' => 'required',
+            'tgl_kembali' => 'required',
         ];
     }
 }

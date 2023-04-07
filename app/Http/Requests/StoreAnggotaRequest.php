@@ -11,7 +11,7 @@ class StoreAnggotaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreAnggotaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nama_anggota' => 'required',
+            'jenis_kelamin' => 'required',
+            'no_telp' => 'required',
+            'alamat' => 'required',
         ];
     }
 }

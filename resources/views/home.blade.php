@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    {{ __('Welcome in Library!') }}
                 </div>
             </div>
         </div>

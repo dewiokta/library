@@ -11,7 +11,7 @@ class StoreBukuRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class StoreBukuRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'judul_buku' => 'required',
+            'kode_buku' => 'required',
+            'penulis' => 'required',
+            'penerbit' => 'required',
+            'thn_terbit' => 'required',
+            'rak_id' => 'required',
         ];
     }
 }

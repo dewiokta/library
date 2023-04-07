@@ -13,7 +13,7 @@ class Book extends Model
         'kode_buku',
         'penulis',
         'penerbit',
-        'thn_terbti',
+        'thn_terbit',
         'rak_id'
     ];
 
